@@ -1,0 +1,48 @@
+{% extends "ticketing/base.html" %}
+{% block container %}
+ <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Issues</h1>
+
+        <!-- DataTable -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Tickets</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Issue Summary</th>
+                      <th>Reporter</th>
+                      <th>Details</th>
+                      <th>Created</th>
+                      <th>Due</th>
+                      <th>Priority</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for t in tickets %}
+                    <tr>
+                        <td>{{ t.issue_summary }}</td>
+                        <td>{{ t.author }}</td>
+                        <td>{{ t.issue_description }}</td>
+                        <td>{{ t.date_submitted }}</td>
+                        <td>{{ t.target_resolution|date:"F d, Y" }}</td>
+                        <td>{{ t.priority }}</td>
+                        <td>{{ t.issue_status }}</td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+{% endblock container %}
